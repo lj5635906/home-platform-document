@@ -3,7 +3,7 @@
 /*==============================================================*/
 drop table if exists home_developer;
 create table home_developer(
-	developer_id 					bigint(20) 		  	AUTO_INCREMENT	NOT NULL COMMENT "主键id",
+	id 					bigint(20) 		  	AUTO_INCREMENT	NOT NULL COMMENT "主键id",
 	
 	developer_code		            varchar(30)									COMMENT "公司代码",
 	developer_name	        		varchar(30)									COMMENT "公司名称",
@@ -31,7 +31,7 @@ create table home_developer(
 	create_time  					datetime NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT "创建时间",
 	update_time  					datetime NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT "更新时间",
 	delete_flag					  	tinyint(1)  NOT NULL DEFAULT "1"            COMMENT "删除标志 1-未删，2-删除",
-   primary key (developer_id)
+   primary key (id)
 )ENGINE=INNODB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8 COMMENT "开发商";
 
 /*==============================================================*/
@@ -95,7 +95,7 @@ create table home_developer_operation_account_login_log(
 /*==============================================================*/
 DROP TABLE IF EXISTS home_building;
 CREATE TABLE home_building(
-	building_id				        bigint(20) 		  	AUTO_INCREMENT	NOT NULL COMMENT "主键Id",
+	id				        bigint(20) 		  	AUTO_INCREMENT	NOT NULL COMMENT "主键Id",
 
 	developer_id					bigint(20)		    			            COMMENT "开发商Id",
 	operation_area_id		        bigint(20)									COMMENT "开发商运营区域Id",
