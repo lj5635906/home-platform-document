@@ -24,13 +24,13 @@ create table home_developer(
 	register_address      			varchar(128)                				COMMENT "工商注册详细地址",
 	
 	create_building_limit			int(20)										COMMENT "该开发商创建楼盘上限",
-	validate_type    				tinyint(1)             				        COMMENT "有效期标志(1-永久有效,2-在时间范围内有效)",
+	validate_type    				tinyint(1)             				        COMMENT "有效期标志(0-永久有效,1-在时间范围内有效)",
 	validate_begin_date    			DATE										COMMENT "有效期开始时间",
 	validate_end_date      			DATE										COMMENT "有效期结束时间",
 	
 	create_time  					datetime NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT "创建时间",
 	update_time  					datetime NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT "更新时间",
-	delete_flag					  	tinyint(1)  NOT NULL DEFAULT "1"            COMMENT "删除标志 1-未删，2-删除",
+	delete_flag					  	tinyint(1)  NOT NULL DEFAULT "0"            COMMENT "删除标志 0-未删，1-删除",
    primary key (id)
 )ENGINE=INNODB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8 COMMENT "开发商";
 
@@ -48,7 +48,7 @@ create table home_developer_operation_area(
 	
 	create_time  					datetime NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT "创建时间",
 	update_time  					datetime NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT "更新时间",
-	delete_flag					  	tinyint(1)  NOT NULL DEFAULT "1"            COMMENT "删除标志 1-未删，2-删除",
+	delete_flag					  	tinyint(1)  NOT NULL DEFAULT "0"            COMMENT "删除标志 0-未删，1-删除",
    primary key (id)
 )ENGINE=INNODB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8 COMMENT "开发商运营区域";
 
@@ -66,7 +66,7 @@ create table home_developer_operation_account(
 	
 	create_time  					datetime NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT "创建时间",
 	update_time  					datetime NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT "更新时间",
-	delete_flag					  	tinyint(1)  NOT NULL DEFAULT "1"            COMMENT "删除标志 1-未删，2-删除",
+	delete_flag					  	tinyint(1)  NOT NULL DEFAULT "0"            COMMENT "删除标志 0-未删，1-删除",
    primary key (id)
 )ENGINE=INNODB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8 COMMENT "开发商运营区域管理账号";
 
@@ -85,7 +85,7 @@ create table home_developer_operation_account_login_log(
 	
 	create_time  					datetime NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT "创建时间",
 	update_time  					datetime NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT "更新时间",
-	delete_flag					  	tinyint(1)  NOT NULL DEFAULT "1"            COMMENT "删除标志 1-未删，2-删除",
+	delete_flag					  	tinyint(1)  NOT NULL DEFAULT "0"            COMMENT "删除标志 0-未删，1-删除",
    primary key (id)
 )ENGINE=INNODB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8 COMMENT "开发商运营区域管理账号登陆日志";
 
@@ -119,7 +119,7 @@ CREATE TABLE home_building(
 	
 	create_time  					datetime NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT "创建时间",
 	update_time  					datetime NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT "更新时间",
-	delete_flag					  	tinyint(1)  NOT NULL DEFAULT "1"            COMMENT "删除标志 1-未删，2-删除",
+	delete_flag					  	tinyint(1)  NOT NULL DEFAULT "0"            COMMENT "删除标志 0-未删，1-删除",
 	PRIMARY KEY(id)
 )ENGINE=INNODB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8 COMMENT "楼盘表";
 
@@ -140,7 +140,7 @@ create table home_building_position(
 	
 	create_time  					datetime NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT "创建时间",
 	update_time  					datetime NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT "更新时间",
-	delete_flag					  	tinyint(1)  NOT NULL DEFAULT "1"            COMMENT "删除标志 1-未删，2-删除",
+	delete_flag					  	tinyint(1)  NOT NULL DEFAULT "0"            COMMENT "删除标志 0-未删，1-删除",
    primary key (id)
 )ENGINE=INNODB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8 COMMENT "楼盘职位";
 
@@ -157,11 +157,11 @@ create table home_apply_cooperation(
 	building_id						bigint(20)		    			            COMMENT "楼盘Id",
 	distribution_id		        	bigint(20)									COMMENT "分销商Id",
 	
-	cooperation_status				tinyint(1)									COMMENT "状态 1-等待审核,2-审核通过,3-审核拒绝,4-解除合作,4-重新合作",
+	cooperation_status				int(1)									COMMENT "状态 1-等待审核,2-审核通过,3-审核拒绝,4-解除合作,4-重新合作",
  	
 	create_time  					datetime NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT "创建时间",
 	update_time  					datetime NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT "更新时间",
-	delete_flag					  	tinyint(1)  NOT NULL DEFAULT "1"            COMMENT "删除标志 1-未删，2-删除",
+	delete_flag					  	tinyint(1)  NOT NULL DEFAULT "0"            COMMENT "删除标志 0-未删，1-删除",
    primary key (id)
 )ENGINE=INNODB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8 COMMENT "分销商申请合作";
 
@@ -180,9 +180,9 @@ create table home_apply_cooperation_record(
 	
 	create_time  					datetime NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT "创建时间",
 	update_time  					datetime NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT "更新时间",
-	delete_flag					  	tinyint(1)  NOT NULL DEFAULT "1"            COMMENT "删除标志 1-未删，2-删除",
+	delete_flag					  	tinyint(1)  NOT NULL DEFAULT "0"            COMMENT "删除标志 0-未删，1-删除",
    primary key (id)
-)ENGINE=INNODB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8 COMMENT "分销商申请合作";
+)ENGINE=INNODB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8 COMMENT "分销商申请合作审核记录";
 
 
 
