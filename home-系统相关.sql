@@ -11,6 +11,7 @@ CREATE TABLE sys_admin(
 	head_image			 			varchar(255)     							COMMENT "头像",
 	account							varchar(50)									COMMENT "登录账号",
 	password						varchar(128)								COMMENT "密码",
+	birthday						datetime									COMMENT "生日",
 	state							int(1)										COMMENT "状态(0-未激活,1-正常,2-锁定,3-注销)",						
 	last_login						datetime									COMMENT "上一次登录时间",
 	login_count						int(1)			DEFAULT 0					COMMENT "登录次数",
@@ -85,7 +86,8 @@ CREATE TABLE sys_authorization(
 	sort							int(10)										COMMENT "序号",			
 	auth_icon						varchar(255)								COMMENT "图标",
 	module 							varchar(50)  						 		COMMENT "所属模块",
-	target 							varchar(20) 								COMMENT "跳转目标",
+	target 							varchar(50) 								COMMENT "跳转目标",
+	url 							varchar(50) 								COMMENT "接口地址",
 	level 							smallint(2) 								COMMENT "资源级别(1 一级/2 二级/3 三级)",
 	remark							varchar(50)									COMMENT "备注",
 	
@@ -102,7 +104,7 @@ DROP TABLE IF EXISTS sys_role_authorization;
 CREATE TABLE sys_role_authorization(
 	id 					bigint(20) 		  	AUTO_INCREMENT	NOT NULL COMMENT "主键id",
 	
-	admin_id						bigint(20)		    			            COMMENT "管理员Id",
+	role_id							bigint(20)		    			            COMMENT "角色Id",
 	authorization_id				bigint(20)		    			            COMMENT "权限Id",
 	
 	create_time  					datetime NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT "创建时间",
